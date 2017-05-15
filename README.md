@@ -1,22 +1,29 @@
-Ansible role for [Packer](https://www.packer.io/) installation.
+# README.md
+# Ansible role: Packer 1.x.x
 
-Supported platforms
--------------------
+Ansible role that installs [Packer](https://www.packer.io/) 1.x.x on Linux-based platforms.
+
+## Requirements
+If you are using SSL/TLS, you will need to provide your own certificate and key files. You can generate a self-signed certificate with a command like `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout example.key -out example.crt`.
+
+## Supported platforms
 - Debian/Ubuntu
 - RedHat/CentOS/Fedora
 
-Variables
----------
+## Role variables
 *(comming soon)*
 
-Playbook example
-----------------
+## Dependencies
 *(comming soon)*
 
-Add using Ansible Galaxy
-------------------------
+## Example playbook
 *(comming soon)*
 
-Add as Git submodule 
---------------------
+## Add using Ansible Galaxy
 *(comming soon)*
+
+## Add as Git submodule 
+*(comming soon)*
+
+## License
+MIT
