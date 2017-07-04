@@ -11,3 +11,5 @@ RUN apt update -q && apt install -y \
 RUN easy_install pip && pip --version
 
 RUN pip install --no-cache ansible && ansible --version
+
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
