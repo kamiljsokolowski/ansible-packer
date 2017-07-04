@@ -1,0 +1,7 @@
+---
+- name: test Ansible Packer role
+  hosts: all
+  gather_facts: true
+  roles:
+    - ansible-packer
+

@@ -1,0 +1,12 @@
+---
+- name: include OS-specific variable set
+    include_vars: "{{ ansible_distribution }}.yml"
+
+- name: install Packer requirements 
+    include: "{{ ansible_pkg_mgr }}.yml"
+
+- name: download Packer archive
+  get_url:
+    url: "{{ archive.download_url }}/{{ archive.version }}/packer_{{ archive.version }}_linux_amd64.zip"
+    dest: "/tmp/packer_{{ archive.version }}_linux_amd64.zip"
+    checksum: "sha256:{{ archive.sha256 }}"
