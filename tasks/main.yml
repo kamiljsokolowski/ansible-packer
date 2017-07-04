@@ -1,9 +1,9 @@
 ---
 - name: include OS-specific variable set
-    include_vars: "{{ ansible_distribution }}.yml"
+  include_vars: "{{ ansible_distribution }}.yml"
 
 - name: install Packer requirements 
-    include: "{{ ansible_pkg_mgr }}.yml"
+  include: "{{ ansible_pkg_mgr }}.yml"
 
 - name: download Packer archive
   get_url:
