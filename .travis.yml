@@ -1,0 +1,15 @@
+---
+sudo: required
+
+env:
+  - distribution: ubuntu
+    version: 16.04
+    init: /lib/systemd/systemd
+    run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+
+services:
+  - docker
+
+before_install:
+  - 'sudo docker pull ${distribution}:${version}'
+  - 'sudo docker build --rm=true --file=./tests/Dockerfile.${distribution}-${version} --tag=ansible-packer-test:${distribution}-${version} ./tests'
