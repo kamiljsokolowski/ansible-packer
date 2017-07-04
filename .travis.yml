@@ -15,7 +15,7 @@ before_install:
   - 'sudo docker build --rm=true --file=./tests/Dockerfile.${distribution}-${version} --tag=ansible-packer-test:${distribution}-${version} ./tests'
 
 script:
-  - container_id=${mktemp}
+  - export container_id=$(mktemp)
   - 'sudo docker run --privileged --detach --volume="${PWD}":/etc/ansible/roles/ansible-packer:ro ${run_opts} ansible-packer-test:${distribution}-${version} ${init} > "${container_id}"'
 
   # syntax check
