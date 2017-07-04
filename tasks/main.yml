@@ -7,6 +7,6 @@
 
 - name: download Packer archive
   get_url:
-    url: "{{ archive.download_url }}/{{ archive.version }}/packer_{{ archive.version }}_linux_amd64.zip"
+    url: "{{ archive.download_url_prefix:}}/{{ archive.version }}/packer_{{ archive.version }}_linux_amd64.zip"
     dest: "/tmp/packer_{{ archive.version }}_linux_amd64.zip"
     checksum: "sha256:{{ archive.sha256 }}"
