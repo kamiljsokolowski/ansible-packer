@@ -1,6 +1,6 @@
 ---
 packer_archive:
-  download_url_prefix: "{{ packer_archive_download_url_prefix | default(https://releases.hashicorp.com/packer) }}"
-  version: "{{ packer_archive_version | default(1.0.2) }}"
-  sha256: "{{ packer_archive_sha256 | default(13774108d10e26b1b26cc5a0a28e26c934b4e2c66bc3e6c33ea04c2f248aad7f) }}"
+  download_url_prefix: "{{ packer_archive_download_url_prefix | default('https://releases.hashicorp.com/packer') }}"
+  version: "{{ packer_archive_version | default('1.0.2') }}"
+  sha256: "{{ packer_archive_sha256 | default('13774108d10e26b1b26cc5a0a28e26c934b4e2c66bc3e6c33ea04c2f248aad7f') }}"
 packer_install_directory: /usr/local/bin
