@@ -3,7 +3,7 @@
   become: yes
   become_method: sudo
   apt:
-    name: "{{ requirements.archive_manager }}"
+    name: "{{ packer_requirements.archive_manager }}"
     state: present
     update_cache: yes
   tags:

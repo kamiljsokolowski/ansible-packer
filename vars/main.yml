@@ -1,5 +1,0 @@
----
-archive:
-  download_url_prefix: https://releases.hashicorp.com/packer
-  version: 1.0.2
-  sha256: 13774108d10e26b1b26cc5a0a28e26c934b4e2c66bc3e6c33ea04c2f248aad7f

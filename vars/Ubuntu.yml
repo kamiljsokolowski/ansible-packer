@@ -1,4 +1,3 @@
 ---
-requirements:
+packer_requirements:
   archive_manager: unzip
-install_directory: /usr/local/bin
