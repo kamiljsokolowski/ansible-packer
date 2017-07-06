@@ -12,6 +12,7 @@ If you are using SSL/TLS, you will need to provide your own certificate and key 
 
 ## Role variables
 Available variables are listed below, along with default values:
+
 | Variable | Required | Default | Comments |
 |----------|----------|---------|----------|
 | `packer_archive_download_url_prefix` | No | `https://releases.hashicorp.com/packer` | Prefix for Packer archive download URL. |
