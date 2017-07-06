@@ -1,0 +1,39 @@
+---
+- name: include OS-specific variable set
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- name: install Packer requirements 
+  include: "{{ ansible_pkg_mgr }}.yml"
+
+- name: download Packer archive
+  get_url:
+    url: "{{ packer_archive.download_url_prefix }}/{{ packer_archive.version }}/packer_{{ packer_archive.version }}_linux_amd64.zip"
+    dest: "/tmp/packer_{{ packer_archive.version }}_linux_amd64.zip"
+    checksum: "sha256:{{ packer_archive.sha256 }}"
+  tags:
+    - packer_archive
+    - download
+
+# idempotence test fails becuase of #4694 (https://github.com/ansible/ansible-modules-core/issues/4694)
+#- name: extract Packer archive
+#  become: yes
+#  become_method: sudo
+#  unarchive:
+#    src: "/tmp/packer_{{ packer_archive.version }}_linux_amd64.zip"
+#    dest: "{{ packer_install_directory }}" 
+#    mode: 0755
+#    remote_src: yes
+#  tags:
+#    - packer_archive
+#    - extract
+
+- name: extract Packer archive (workaround for \#4694)
+  become: yes
+  become_method: sudo
+  shell: "unzip -q /tmp/packer_{{ packer_archive.version }}_linux_amd64.zip -d {{ packer_install_directory }}"
+  args:
+    executable: /bin/bash
+    creates: "{{ packer_install_directory }}/packer"
+  tags:
+    - packer_archive
+    - extract

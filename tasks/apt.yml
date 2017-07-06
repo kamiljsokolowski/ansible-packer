@@ -1,0 +1,11 @@
+---
+- name: install archive manager
+  become: yes
+  become_method: sudo
+  apt:
+    name: "{{ packer_requirements.archive_manager }}"
+    state: present
+    update_cache: yes
+  tags:
+    - requirements
+    - archive_manager

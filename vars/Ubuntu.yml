@@ -1,0 +1,3 @@
+---
+packer_requirements:
+  archive_manager: unzip
