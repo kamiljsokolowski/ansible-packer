@@ -3,5 +3,5 @@
   hosts: all
   gather_facts: true
   roles:
-    - ansible-packer
+    - ansible-role-packer
 
