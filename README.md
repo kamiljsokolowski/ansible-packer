@@ -1,7 +1,7 @@
 # README.md
 # Ansible role: Packer 1.x.x
 
-[![Build Status](https://travis-ci.org/kamiljsokolowski/ansible-packer.png)](https://travis-ci.org/kamiljsokolowski/ansible-packer)
+[![Build Status](https://travis-ci.org/kamiljsokolowski/ansible-role-packer.png)](https://travis-ci.org/kamiljsokolowski/ansible-role-packer)
 
 Ansible role that installs [Packer](https://www.packer.io/) 1.x.x on Linux-based platforms.
 

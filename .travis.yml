@@ -2,6 +2,7 @@
 sudo: required
 
 env:
+  - role_under_test: ansible-role-packer
   - distribution: ubuntu
     version: 16.04
     init: /lib/systemd/systemd
@@ -16,21 +17,21 @@ services:
 
 before_install:
   - 'sudo docker pull ${distribution}:${version}'
-  - 'sudo docker build --rm=true --file=./tests/Dockerfile.${distribution}-${version} --tag=ansible-packer-test:${distribution}-${version} ./tests'
+  - 'sudo docker build --rm=true --file=./tests/Dockerfile.${distribution}-${version} --tag=${role_under_test}-test:${distribution}-${version} ./tests'
 
 script:
   - export container_id=$(mktemp)
-  - 'sudo docker run --privileged --detach --volume="${PWD}":/etc/ansible/roles/ansible-packer:ro ${run_opts} ansible-packer-test:${distribution}-${version} ${init} > "${container_id}"'
+  - 'sudo docker run --privileged --detach --volume="${PWD}":/etc/ansible/roles/${role_under_test}:ro ${run_opts} ${role_under_test}-test:${distribution}-${version} ${init} > "${container_id}"'
 
   # syntax check
-  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/ansible-packer/tests/main.yml --syntax-check'
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role_under_test}/tests/main.yml --syntax-check'
 
   # first run check
-  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/ansible-packer/tests/main.yml'
+  - 'sudo docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role_under_test}/tests/main.yml'
 
   # idempotence check
   - >
-    sudo docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/ansible-packer/tests/main.yml
+    sudo docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${role_under_test}/tests/main.yml
     | grep -q 'changed=0.*failed=0'
     && (echo 'idempotence check: pass' && exit 0)
     || (echo 'idempotence check: fail' && exit 1)
