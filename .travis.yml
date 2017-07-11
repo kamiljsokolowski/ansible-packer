@@ -37,3 +37,6 @@ script:
 
   # clean up
   - 'sudo docker stop "$(cat ${container_id})"'
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
