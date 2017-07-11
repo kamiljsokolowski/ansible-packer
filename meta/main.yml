@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Kamil Sokolowski
+  description: Ansible role that installs Packer 1.x.x on Linux-based platforms.
+  company: Finastra
+  issue_tracker_url: https://github.com/kamiljsokolowski/ansible-role-packer/issues
+  license: MIT
+  min_ansible_version: 2.3.0
+  github_branch: master
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+    - wily
+    - xenial
+  galaxy_tags:
+    - packer
+    - ubuntu
+dependencies: []
